@@ -4,7 +4,6 @@
 #include <fcntl.h>
 
 #include "file.h"
-#include "common.h"
 
 
 int create_db_file(char *filename){
@@ -25,5 +24,10 @@ int create_db_file(char *filename){
 }
 
 int open_db_file(char *filename){
-    
+    int fd = open(filename , O_RDWR , 0644);
+    if(fd == -1){
+        return -1;
+    }
+
+    return fd;
 }
